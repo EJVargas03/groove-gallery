@@ -1,7 +1,17 @@
 <script setup>
+import { onMounted } from 'vue'
+  
   import MainSearch from '@/components/MainSearch.vue'
   import MainCards from '@/components/MainCards.vue'
   import MainPagination from '@/components/MainPagination.vue'
+
+  import useAPI from '@/composables/useAPI'
+
+  const { getSongs, loading } = useAPI()
+
+  onMounted(async () => {
+    await getSongs()
+  })
 </script>
 
 <template>
