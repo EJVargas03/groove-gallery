@@ -7,10 +7,10 @@
 
     import useAPI from '@/composables/useAPI'
 
-    const { getCharacters, loading } = useAPI()
+    const { getSongs, loading } = useAPI()
 
     onMounted(async () => {
-        await getCharacters()
+        await getSongs()
     })
 </script>
 

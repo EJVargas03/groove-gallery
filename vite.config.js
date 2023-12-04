@@ -6,7 +6,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/groove-gallery/',
+  base: '/',
   plugins: [vue()],
   resolve: {
     alias: {
