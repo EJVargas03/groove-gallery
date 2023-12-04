@@ -2,7 +2,7 @@
     import { ref } from 'vue'
 
     import useAPI from '@/composables/useAPI'
-    const { getSongs } = useAPI()
+    //const { getSongs } = useAPI()
 
 
     const selectCard = () => {
@@ -10,16 +10,19 @@
     }
 
     const props = defineProps({
-        character: {
+        song: {
             type: Object,
             required: true,
             default: () => {
                 return {
-                    createdAt: '2020-01-01',
+                    createdAt: '2022-01-01',
                     songId: '123',
-                    name: 'John Doe',
-                    image: 'https://www.example.com',
-                    updatedAt: '2022-01-01',
+                    name: 'john doe',
+                    image: 'url',
+                    artist: 'name',
+                    title: 'title',
+                    album: 'album',
+                    genera: 'genera',
                 }
             },    
         },
@@ -30,11 +33,12 @@
   <RouterLink v-if="props.songs.songId" :to="`/api/songs/${props.songs.songId}`">
   <div class="card" @click="selectCard">
     <div class="card-image">
-      <img :src="props.sogns.image" alt="" srcset="" />
+      <img :src="props.song.image" alt="" srcset="" />
     </div>
     <div class="card-details">
       <p class="card-details-name font-poppins">{{ props.songs.name }}</p>
       <p class="card-details-artist font-poppins">{{ props.songs.artist }}</p>
+      <p class="card-details-title font-poppins">{{ props.songs.title }}</p>
       <p class="card-details-album font-poppins">{{ props.songs.album }}</p>  
       <p class="card-details-genera font-poppins">"{{ props.songs.genera }}"</p>  
     </div>
@@ -55,6 +59,9 @@
             @apply flex flex-col gap-2 pt-6 text-center;
             &-name {
                 @apply text-3xl font-thin tracking-wide text-orange-800;
+            }
+            &-title {
+                @apply -mt-2 text-xs font-bold text-orange-600;
             }
             &-artist {
                 @apply -mt-2 text-xs font-bold text-orange-600;

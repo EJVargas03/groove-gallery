@@ -1,63 +1,41 @@
 <script setup>
-  import { ref } from 'vue'
-  import { faker } from '@faker-js/faker'
-
+  import { ref, computed } from "vue";
   import useAPI from '@/composables/useAPI'
-  //const { getSongs } = useAPI()
+  import MainCardsSingle from '@/components/MainCardSingle.vue'
+  import MainSearch from '@/components/MainSearch.vue'
+  
+  const { songs } = useAPI()
+  const search = ref('');
 
-  const selectCard = () => {
-    console.log(`${props.songs.name} selected`)
-  }
+  const filteredList = computed(() => {
+  return songs.value.filter(song =>
+    songs.name.toLowerCase().includes(search.value.toLowerCase())
+  );
+});
 
-  const props = defineProps({
-    songs: {
-      type: Object,
-      required: true,
-      default: () => {
-        return {
-          song: '123',
-          name: 'John Doe',
-          image: 'https://www.example.com'
-        }
-      },
-    },
-  })
 
 </script>
 
 <template>
-  <RouterLink v-if="props.songs.songId" :to="`/api/songs/${props.songs.songId}`">
-  <div class="card" @click="selectCard">
-    <div class="card-image">
-      <img :src="props.songs.image" alt="" srcset="" />
-    </div>
-    <div class="card-details">
-      <p class="card-details-name font-poppins">{{ props.songs.name }}</p>
+  <input type="text" placeholder="Search..." class="search" v-model="search" />
 
-    </div>
+  <div class="sub-wrapper" v-if="songs">
+
+    <Suspense>
+
+      <MainCardsSingle v-for="songs in filteredList" :key="songs.songId" :songs="songs" />
+      <template #fallback>
+        <div>Loading...</div>
+      </template>
+    </Suspense>
   </div>
-  </RouterLink>
 </template>
 
 <style scoped lang="postcss">
-  .card {
-    @apply cursor-pointer overflow-hidden rounded-md p-8 shadow-md transition-transform duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-slate-900;
-    &-image {
-      img {
-        @apply mx-auto rounded-full object-contain;
-      }
+  .search {
+        @apply px-3 py-4 placeholder-slate-400 text-slate-700 rounded-md border-0 outline-none focus:ring focus:ring-yellow-500;
     }
-    &-details {
-      @apply flex flex-col gap-2  pt-6 text-center;
-      &-name {
-        @apply text-4xl  text-black;
-      }
-      &-job {
-        @apply -mt-2 text-xs font-bold text-yellow-700;
-      }
-      &-quote {
-        @apply pt-4 text-lg italic text-slate-800;
-      }
-    }
+  .sub-wrapper {
+    @apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
   }
 </style>
