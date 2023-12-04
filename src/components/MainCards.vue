@@ -1,23 +1,63 @@
 <script setup>
-    import useAPI from '@/composables/useAPI'
-    import MainCardsSingle from '@/components/MainCardsSingle.vue'
+  import { ref } from 'vue'
+  import { faker } from '@faker-js/faker'
 
-    const { songs } = useAPI()
+  import useAPI from '@/composables/useAPI'
+  //const { getSongs } = useAPI()
+
+  const selectCard = () => {
+    console.log(`${props.songs.name} selected`)
+  }
+
+  const props = defineProps({
+    songs: {
+      type: Object,
+      required: true,
+      default: () => {
+        return {
+          song: '123',
+          name: 'John Doe',
+          image: 'https://www.example.com'
+        }
+      },
+    },
+  })
+
 </script>
 
 <template>
-    <div class="sub-wrapper">
-        <Suspense>
-            <MainCardsSingle v-for="song in songs" :key="songId" :song="song"/>
-            <template #fallback>
-                <div>Loading...</div>
-            </template>
-        </Suspense>
+  <RouterLink v-if="props.songs.songId" :to="`/api/songs/${props.songs.songId}`">
+  <div class="card" @click="selectCard">
+    <div class="card-image">
+      <img :src="props.songs.image" alt="" srcset="" />
     </div>
+    <div class="card-details">
+      <p class="card-details-name font-poppins">{{ props.songs.name }}</p>
+
+    </div>
+  </div>
+  </RouterLink>
 </template>
 
 <style scoped lang="postcss">
-    .sub-wrapper {
-        @apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  .card {
+    @apply cursor-pointer overflow-hidden rounded-md p-8 shadow-md transition-transform duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-slate-900;
+    &-image {
+      img {
+        @apply mx-auto rounded-full object-contain;
+      }
     }
+    &-details {
+      @apply flex flex-col gap-2  pt-6 text-center;
+      &-name {
+        @apply text-4xl  text-black;
+      }
+      &-job {
+        @apply -mt-2 text-xs font-bold text-yellow-700;
+      }
+      &-quote {
+        @apply pt-4 text-lg italic text-slate-800;
+      }
+    }
+  }
 </style>

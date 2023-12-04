@@ -2,6 +2,8 @@
     import { ref } from 'vue'
 
     import useAPI from '@/composables/useAPI'
+    const { getSongs } = useAPI()
+
 
     const selectCard = () => {
         console.log(`${props.songs.name} selected`)
