@@ -1,41 +1,68 @@
 <script setup>
-  import { ref, computed } from "vue";
-  import useAPI from '@/composables/useAPI'
-  import MainCardsSingle from '@/components/MainCardSingle.vue'
-  import MainSearch from '@/components/MainSearch.vue'
-  
-  const { songs } = useAPI()
-  const search = ref('');
+    import { ref } from 'vue'
 
-  const filteredList = computed(() => {
-  return songs.value.filter(song =>
-    song.name.toLowerCase().includes(search.value.toLowerCase())
-  );
-});
+    import useAPI from '@/composables/useAPI'
 
+    const selectCard = () => {
+        console.log(`${props.songs.name} selected`)
+    }
 
+    const props = defineProps({
+        character: {
+            type: Object,
+            required: true,
+            default: () => {
+                return {
+                    createdAt: '2020-01-01',
+                    songId: '123',
+                    name: 'John Doe',
+                    image: 'https://www.example.com',
+                    updatedAt: '2022-01-01',
+                }
+            },    
+        },
+    })
 </script>
 
 <template>
-  <input type="text" placeholder="Search..." class="search" v-model="search" />
-
-  <div class="sub-wrapper" v-if="songs">
-
-    <Suspense>
-
-      <MainCardsSingle v-for="song in filteredList" :key="song.songId" :song="song" />
-      <template #fallback>
-        <div>Loading...</div>
-      </template>
-    </Suspense>
+  <RouterLink v-if="props.songs.songId" :to="`/api/songs/${props.songs.songId}`">
+  <div class="card" @click="selectCard">
+    <div class="card-image">
+      <img :src="props.sogns.image" alt="" srcset="" />
+    </div>
+    <div class="card-details">
+      <p class="card-details-name font-poppins">{{ props.songs.name }}</p>
+      <p class="card-details-artist font-poppins">{{ props.songs.artist }}</p>
+      <p class="card-details-album font-poppins">{{ props.songs.album }}</p>  
+      <p class="card-details-genera font-poppins">"{{ props.songs.genera }}"</p>  
+    </div>
   </div>
+</RouterLink>
 </template>
 
 <style scoped lang="postcss">
-  .search {
-        @apply px-3 py-4 placeholder-slate-400 text-slate-700 rounded-md border-0 outline-none focus:ring focus:ring-yellow-500;
+    .card {
+        @apply cursor-pointer overflow-hidden rounded-md bg-orange-300 p-8 shadow-md
+        transition duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-red-900;
+        &-image {
+            img {
+                @apply mx-auto rounded-full object-contain;
+            }
+        }
+        &-details {
+            @apply flex flex-col gap-2 pt-6 text-center;
+            &-name {
+                @apply text-3xl font-thin tracking-wide text-orange-800;
+            }
+            &-artist {
+                @apply -mt-2 text-xs font-bold text-orange-600;
+            }
+            &-album {
+                @apply text-sm text-orange-500;
+            }
+            &-genera {
+                @apply pt-4 text-lg italic text-orange-800;
+            }
+        }
     }
-  .sub-wrapper {
-    @apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
-  }
 </style>

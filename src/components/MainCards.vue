@@ -1,15 +1,23 @@
 <script setup>
-  import MainCardsSingle from '@/components/MainCardsSingle.vue'
+    import useAPI from '@/composables/useAPI'
+    import MainCardsSingle from '@/components/MainCardsSingle.vue'
+
+    const { songs } = useAPI()
 </script>
 
 <template>
-  <div class="sub-wrapper">
-    <MainCardsSingle v-for="n in 20" :key="n" />
-  </div>
+    <div class="sub-wrapper">
+        <Suspense>
+            <MainCardsSingle v-for="song in songs" :key="songId" :song="song"/>
+            <template #fallback>
+                <div>Loading...</div>
+            </template>
+        </Suspense>
+    </div>
 </template>
 
 <style scoped lang="postcss">
-  .sub-wrapper {
-    @apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
-  }
+    .sub-wrapper {
+        @apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+    }
 </style>

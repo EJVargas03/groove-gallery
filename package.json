@@ -1,5 +1,5 @@
 {
-  "name": "vue-basic-template",
+  "name": "groove-gallery",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,7 +13,9 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@vueuse/firebase": "^10.6.1",
     "axios": "^1.6.2",
+    "firebase": "^10.7.0",
     "vue": "^3.2.37",
     "vue-router": "^4.2.5"
   },

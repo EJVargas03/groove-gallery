@@ -1,10 +1,9 @@
 <template>
-    <h1 class="not-found">404 not found</h1>
+    <h2 class="not-found">404 - Page not found</h2>
 </template>
 
-<style lang="postcss" scoped>
-.not-found {
-    @apply pt-80 text-center text-7xl font-bold;
-}
-
+<style lang="postcss" scoped >
+    .not-found {
+        @apply pt-80 text-center text-7xl font-bold;
+    }
 </style>
