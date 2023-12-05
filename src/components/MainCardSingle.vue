@@ -2,11 +2,11 @@
     import { ref } from 'vue'
 
     import useAPI from '@/composables/useAPI'
-    //const { getSongs } = useAPI()
+    //const {  } = useAPI()
 
 
     const selectCard = () => {
-        console.log(`${props.songs.name} selected`)
+        console.log(`${props.song.name} selected`)
     }
 
     const props = defineProps({
@@ -30,17 +30,17 @@
 </script>
 
 <template>
-  <RouterLink v-if="props.songs.songId" :to="`/api/songs/${props.songs.songId}`">
+    <RouterLink v-if="props.song.songId" :to="`/api/songs/${props.song.songId}`">
   <div class="card" @click="selectCard">
     <div class="card-image">
       <img :src="props.song.image" alt="" srcset="" />
     </div>
     <div class="card-details">
-      <p class="card-details-name font-poppins">{{ props.songs.name }}</p>
-      <p class="card-details-artist font-poppins">{{ props.songs.artist }}</p>
-      <p class="card-details-title font-poppins">{{ props.songs.title }}</p>
-      <p class="card-details-album font-poppins">{{ props.songs.album }}</p>  
-      <p class="card-details-genera font-poppins">"{{ props.songs.genera }}"</p>  
+      <p class="card-details-name font-poppins">{{ props.song.name }}</p>
+      <p class="card-details-artist font-poppins">{{ props.song.artist }}</p>
+      <p class="card-details-title font-poppins">{{ props.song.title }}</p>
+      <p class="card-details-album font-poppins">{{ props.song.album }}</p>  
+      <p class="card-details-genera font-poppins">"{{ props.song.genera }}"</p>  
     </div>
   </div>
 </RouterLink>

@@ -6,7 +6,7 @@ const pages = ref(1)
 const loading = ref(false)
 const activePage = ref(1)
 const pageSize = ref(12)
-const currentSong = ref(null)
+const currentSongs = ref(null)
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -29,14 +29,14 @@ const getSongs = async () => {
   loading.value = false
 }
 
-const fetchSong = async (id) => {
+const fetchSongs = async (id) => {
     const { data } = await api.get(`/api/songs/${id}`)
     currentSongs.value = data
     console.log(data)
   }
 
 const useAPI = () => {
-  return { songs, pages, activePage, loading, pageSize, getSongs, fetchSong, currentSong}
+  return { songs, pages, activePage, loading, pageSize, getSongs, fetchSongs, currentSongs}
 }
 
 export default useAPI
