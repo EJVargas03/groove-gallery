@@ -36,11 +36,8 @@
       <img :src="props.song.image" alt="" srcset="" />
     </div>
     <div class="card-details">
-      <p class="card-details-name font-poppins">{{ props.song.name }}</p>
       <p class="card-details-artist font-poppins">{{ props.song.artist }}</p>
-      <p class="card-details-title font-poppins">{{ props.song.title }}</p>
-      <p class="card-details-album font-poppins">{{ props.song.album }}</p>  
-      <p class="card-details-genera font-poppins">"{{ props.song.genera }}"</p>  
+      <p class="card-details-title font-poppins">{{ props.song.title }}</p>  
     </div>
   </div>
 </RouterLink>
