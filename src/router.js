@@ -4,13 +4,15 @@ const {isAuthenticated} = useAuth()
 import MainPage from '@/components/MainPage.vue'
 import LoginPage from '@/components/LoginPage.vue'
 import SettingsPage from '@/components/SettingsPage.vue'
+import ProtectedPage from '@/components/ProtectedPage.vue'
 import NotFound from '@/components/NotFound.vue'
 import HomePage from '@/views/HomePage.vue'
 
 const routes = [
   { path: '/groove-gallery/', name: 'Home', component: MainPage },
   { path: '/login', name: 'Login', component: LoginPage },
-  { path: '/settings', name: 'Settings', component: SettingsPage, meta: {requiresAuth: true} },
+  { path: '/settings', name: 'Settings', component: SettingsPage, meta: { requiresAuth: true } },
+  { path: '/protected', name: 'Protected', component: ProtectedPage, meta: {requiresAuth: true} },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
   { path: '/other', name: 'Other', component: () => import('@/views/OtherPage.vue') },
   { path: '/api/songs/:id', name: 'Song', component: () => import('@/views/SongPage.vue')},

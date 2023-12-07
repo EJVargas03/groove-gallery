@@ -20,12 +20,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <main class="min-h-screen bg-gradient-to-b from-purple-900 to-pink-300 font-poppins">
-    <div v-if="currentSongs" class="flex flex-col items-center justify-center gap-6">
-      <h1 class="text-yellow-500 text-3xl font-bold">Artist: {{ currentSongs.artist }}</h1>
-      <p class="text-white text-5xl font-bold">Title: {{ currentSongs.title }}</p>
-      <p class="text-yellow-500 text-4xl font-bold">Album: {{ currentSongs.album }}</p>
-      <p class="text-white text-3xl font-bold">Genera: {{ currentSongs.genera }}</p>
+  <main class="min-h-screen bg-gradient-to-b from-purple-900 to-pink-300 font-poppins flex items-center justify-center">
+    <div v-if="currentSongs" class="bg-white p-8 rounded-md shadow-lg text-center">
+      <h1 class="text-purple-900 text-4xl font-bold mb-4">Artist: {{ currentSongs.artist }}</h1>
+      <p class="text-purple-900 text-4xl font-bold mb-4">Title: {{ currentSongs.title }}</p>
+      <p class="text-purple-900 text-4xl font-bold mb-4">Album: {{ currentSongs.album }}</p>
+      <p class="text-purple-900 text-4xl font-bold mb-4">Genre: {{ currentSongs.genera }}</p>
     </div>
   </main>
 </template>

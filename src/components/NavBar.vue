@@ -24,6 +24,8 @@ const {isAuthenticated, logout, user} = useAuth()
             <div v-if="isAuthenticated">
                 <i v-show="isAuthenticated" class="px-2 py-4">Welcome {{user.name}}</i>
                 <RouterLink :to="{name: 'Settings'}" class="menu-item">settings</RouterLink>
+                
+                <RouterLink :to="{name: 'Protected'}" class="menu-item">credits</RouterLink>
                 <button class="menu-logout" @click="logout">logout</button>
             </div>
 
