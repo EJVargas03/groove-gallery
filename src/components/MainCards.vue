@@ -1,7 +1,6 @@
 <script setup>
   import useAPI from '@/composables/useAPI'
   import MainCardsSingle from '@/components/MainCardSingle.vue'
-
   const { songs } = useAPI()
 </script>
 
