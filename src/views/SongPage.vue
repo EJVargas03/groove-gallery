@@ -23,7 +23,7 @@ onUnmounted(() => {
 
 <template>
   <main
-    class="min-h-screen bg-gradient-to-b from-amber-900 to-yellow-300 font-poppins"
+    class="min-h-screen bg-gradient-to-b from-purple-900 to-pink-300 font-poppins"
   >
     <div
       v-if="currentSong"

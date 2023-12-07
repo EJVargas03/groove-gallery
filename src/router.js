@@ -12,8 +12,8 @@ const routes = [
   { path: '/login', name: 'Login', component: LoginPage },
   { path: '/settings', name: 'Settings', component: SettingsPage, meta: {requiresAuth: true} },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
-//  { path: '/other', name: 'Other', component: () => import('@/views/OtherPage.vue') },
-//  { path: '/api/songs/:id', name: 'Song', component: () => import('@/views/SongPage.vue')},
+  { path: '/other', name: 'Other', component: () => import('@/views/OtherPage.vue') },
+  { path: '/api/songs/:id', name: 'Song', component: () => import('@/views/SongPage.vue')},
 ]
 
 const router = createRouter({

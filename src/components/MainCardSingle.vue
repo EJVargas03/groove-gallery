@@ -48,8 +48,8 @@
 
 <style scoped lang="postcss">
     .card {
-        @apply cursor-pointer overflow-hidden rounded-md bg-orange-300 p-8 shadow-md
-        transition duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-red-900;
+        @apply cursor-pointer overflow-hidden rounded-md bg-purple-800 p-8 shadow-md
+        transition duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-pink-400;
         &-image {
             img {
                 @apply mx-auto rounded-full object-contain;
@@ -58,19 +58,19 @@
         &-details {
             @apply flex flex-col gap-2 pt-6 text-center;
             &-name {
-                @apply text-3xl font-thin tracking-wide text-orange-800;
+                @apply text-4xl font-bold tracking-wide text-orange-800;
             }
             &-title {
-                @apply -mt-2 text-xs font-bold text-orange-600;
+                @apply -mt-2 text-3xl font-bold text-white;
             }
             &-artist {
-                @apply -mt-2 text-xs font-bold text-orange-600;
+                @apply -mt-2 text-sm font-bold text-yellow-500;
             }
             &-album {
-                @apply text-sm text-orange-500;
+                @apply text-sm text-yellow-500;
             }
             &-genera {
-                @apply pt-4 text-lg italic text-orange-800;
+                @apply pt-4 text-lg italic text-white;
             }
         }
     }
