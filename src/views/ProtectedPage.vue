@@ -13,9 +13,8 @@ const api = axios.create({
 </script>
 
 <template>
-  <div class="container">
-
-    <div class="credits mx-80 max-w-md">
+  <div>
+    <div class="credits">
             <h1 class="text-center mb-6"> <strong>Credits and Project Overview </strong></h1>
 
       <div class="credit-item">
@@ -68,6 +67,6 @@ const api = axios.create({
   }
 
   p {
-    @apply mt-4;
+    @apply mt-4 ;
   }
 </style>

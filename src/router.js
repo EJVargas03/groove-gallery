@@ -3,8 +3,8 @@ import { useAuth } from '@/composables/useAuth'
 const {isAuthenticated} = useAuth()
 import MainPage from '@/components/MainPage.vue'
 import LoginPage from '@/components/LoginPage.vue'
-import SettingsPage from '@/components/SettingsPage.vue'
-import ProtectedPage from '@/components/ProtectedPage.vue'
+import SettingsPage from '@/views/SettingsPage.vue'
+import ProtectedPage from '@/views/ProtectedPage.vue'
 import NotFound from '@/components/NotFound.vue'
 import HomePage from '@/views/HomePage.vue'
 
