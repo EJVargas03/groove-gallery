@@ -13,7 +13,6 @@ const {isAuthenticated, logout, user} = useAuth()
             <span class="brand-title">{{ brand }}</span>
         </RouterLink>
         <div class="menu">
-            <!---<RouterLink :to="{name: 'Home'}" class="menu-item">Departments</RouterLink>-->
             <p v-show="isAuthenticated" class="px-2 py-4">
             Welcome back
             <strong>
@@ -22,10 +21,9 @@ const {isAuthenticated, logout, user} = useAuth()
             </p>
             
             <div v-if="isAuthenticated">
-                <i v-show="isAuthenticated" class="px-2 py-4">Welcome {{user.name}}</i>
-                <RouterLink :to="{name: 'Settings'}" class="menu-item">settings</RouterLink>
+                <!--<RouterLink :to="{name: 'Settings'}" class="menu-item">Add Song</RouterLink>-->
                 
-                <RouterLink :to="{name: 'Protected'}" class="menu-item">credits</RouterLink>
+                <RouterLink :to="{name: 'Protected'}" class="menu-item">Credits</RouterLink>
                 <button class="menu-logout" @click="logout">logout</button>
             </div>
 
@@ -58,7 +56,7 @@ const {isAuthenticated, logout, user} = useAuth()
                 }
 
                 &-item {
-                    @apply rounded-md px-4 py-2 hover:bg-yellow-500 hover:text-slate-900;
+                    @apply rounded-md px-4 py-2 mx-2 bg-purple-500 hover:bg-yellow-500 hover:text-slate-900;
                 }
 
                 &-login {

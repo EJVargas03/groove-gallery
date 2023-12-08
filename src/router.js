@@ -14,7 +14,6 @@ const routes = [
   { path: '/settings', name: 'Settings', component: SettingsPage, meta: { requiresAuth: true } },
   { path: '/protected', name: 'Protected', component: ProtectedPage, meta: {requiresAuth: true} },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
-  { path: '/other', name: 'Other', component: () => import('@/views/OtherPage.vue') },
   { path: '/api/songs/:id', name: 'Song', component: () => import('@/views/SongPage.vue')},
 ]
 
